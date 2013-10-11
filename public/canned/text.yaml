@@ -1,0 +1,3 @@
+slower:
+    - url   : https://github.com/davidfmiller/slower
+      mime  : text/yaml

@@ -1,0 +1,44 @@
+{>layout/}
+{<content}
+  <p>Use the form &#8595; or the bookmarklet &#8593; to slow your URLs down.</p>
+	<form action="/slower" method="get">
+    <fieldset>
+      <legend>Duration</legend>
+	    <label for="rmr-slow-sleep" id="sleep">
+        <span>Sleep:</span>	    
+  	    <input name="sleep" id="rmr-slow-sleep" type="number" min="1" max="10" value="{sleep}"> seconds
+  	  </label>
+    </fieldset>
+
+	  <fieldset>
+	    <legend>Source</legend>
+	    <label for="rmr-slow-mime">
+	      <span>Canned:</span>
+        <select name="mime" id="rmr-slow-mime" autofocus>
+          {#mimes}
+            <optgroup label="{group}">
+              {#types}
+                <option value="{type}">{label}</option>
+              {/types}
+            </optgroup>
+          {/mimes}
+        </select> , or
+	    </label>
+
+      <label for="rmr-slow-url">
+        <span>URL:</span>
+  	    <input id="rmr-slow-url" type="url" name="url" value="" placeholder="http://" size="24">
+	    </label>
+	    </fieldset>
+
+	    <fieldset class="submit">
+  	    <input type="submit" value="Slow"> <span></span>
+	    </fieldset>
+	  </fieldset>
+	</form>
+
+{/content}
+
+
+
+
