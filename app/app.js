@@ -40,6 +40,8 @@ app.configure(function(){
   app.use(require('less-middleware')({ src: __dirname + '/public' }));
   app.use(express.static(path.join(__dirname, 'public')));
 
+  app.disable('x-powered-by');
+
   app.use(function(req, res, next){
 /*
     if (req.session.user) {
@@ -50,7 +52,6 @@ app.configure(function(){
     res.locals.q = req.body;
     res.locals.err = false; 
 */
-
     next();
   });
 });
@@ -61,6 +62,7 @@ app.configure('development', function(){
 
 app.locals.inspect = require('util').inspect;
 app.get('/', routes.index);
+
 
 app.get('/slower', function(req, res) {
 
@@ -77,9 +79,9 @@ app.get('/slower', function(req, res) {
     console.log('slowing ' + target);
 
     setTimeout( function() { 
-      request(target, function (error, response, body) {
+      request( { 'url' : target, 'headers' : { 'User-Agent' : 'slower/1.0' }  }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-          res.writeHead('200', {'Content-Type' : response.headers['content-type'] });
+          res.writeHead('200', {'Content-Type' : response.headers['content-type'], 'Cache-Control' : 'no-cache, must-revalidate' });
           res.end(body);
         } else {
           res.writeHead(500, { 'Content-Type' : 'text/html' });
@@ -96,7 +98,7 @@ app.get('/slower', function(req, res) {
     setTimeout( function() { 
       fs.readFile(f, function(err, data) {
         if (! err) {
-          res.writeHead(200, { 'Content-Type' : canned });
+          res.writeHead(200, { 'Content-Type' : canned, 'Cache-Control' : 'no-cache, must-revalidate' });
           res.end(data);
         } else {
           res.writeHead(500, { 'Content-Type' : 'text/html' });

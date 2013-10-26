@@ -2,6 +2,8 @@ exports.index = function(req, res){
 
   'use strict';
 
+
+
 	res.locals.session = req.session;
 
 	var types = [
