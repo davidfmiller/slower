@@ -12,7 +12,7 @@
     <div id="doc">
       <header>
         <div>
-          <h1><a href="https://github.com/davidfmiller/slow" title="slower">slower</a></h1>
+          <h1><a href="https://github.com/davidfmiller/slower" title="slower">slower</a></h1>
           <a class="marklet" href="javascript:(function() { document.location='http://{domain}/slower?sleep={sleep}&#x26;url=' + escape(document.location) }()); void(0);" title="Bookmark this link to slow any URL">&#x2192; slower</a>
         </div>
       </header>
