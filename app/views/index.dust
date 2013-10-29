@@ -1,6 +1,7 @@
 {>layout/}
 {<content}
   <p>Use the form &#8595; or the bookmarklet &#8593; to slow your URLs down.</p>
+  
 	<form action="/slower" method="get">
     <fieldset>
       <legend>Duration</legend>
@@ -36,9 +37,7 @@
 	    </fieldset>
 	  </fieldset>
 	</form>
-
+<!--
+  <input id="rmr-slow-result">
+-->
 {/content}
-
-
-
-

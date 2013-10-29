@@ -26,12 +26,20 @@ YUI.add('slower', function(Y) {
         });
 
         Y.one('form .submit input').on('click', function(e) {
-          var f = e.target.ancestor('form');
-          e.halt();
-          f.addClass(LOADING_CLASS)._node.submit();
+          var f = e.target.ancestor('form'),
+              dest = Y.one('#rmr-slow-result');
+
+          f.addClass(LOADING_CLASS); //._node.submit();
+          
+//          e.halt();
+//          dest.set('value', 'hi');
+
+//          dest.focus();
+
+//          rmr-slow-result
         });
-  
-        Y.one('form').removeClass(LOADING_CLASS);
+
+//        Y.one('form').removeClass(LOADING_CLASS);
       }
     },
     {

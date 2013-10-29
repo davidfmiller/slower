@@ -46,6 +46,10 @@ footer a:hover {
   text-decoration: underline;
 }
 
+code {
+  font-family: monospace;
+}
+
 h1 {
   background: url(../img/slower.png) 0 3px no-repeat;
   color: #ffc900;
@@ -146,7 +150,7 @@ legend {
   color: #000;
 }
 
-input, select {
+form input, form select {
   border: none;
   padding: 3px;
   background: #f8f8f8;
@@ -211,7 +215,7 @@ fieldset.submit span {
 }
 
 .yui3-js-enabled fieldset.submit span {
-  background: url(../img/loading.gif);
+  background: url(../img/loading-small.gif);
 }
 
 .loading fieldset.submit span {
@@ -238,8 +242,6 @@ a:hover {
 }
 
 /* @end */
-
-
 
 
 /* @group mobile */
