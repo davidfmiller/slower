@@ -7,6 +7,15 @@
     <meta name="keywords" content="slower">
     <meta name="description" content="slower">
     <meta name="viewport" content="width=400">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/img/apple-touch-icon/57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/apple-touch-icon/72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/apple-touch-icon/114x114.png">
+
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/assets/img/apple-touch-icon/60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/img/apple-touch-icon/120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/apple-touch-icon/144x144.png">
+
   </head>
   <body>
     <div id="doc">
