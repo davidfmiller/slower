@@ -30,7 +30,7 @@
 	      <span>Status:</span>
         <select name="status" id="rmr-slow-status">
           {#codes}
-              <option value="{code}">{code} {label}</option>
+              <option value="{code}">{code} - {label}</option>
           {/codes}
         </select>
 	    </label>

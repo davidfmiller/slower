@@ -10,7 +10,7 @@ exports.index = function(req, res){
     {
     'group' : 'Text',
     'types' : [
-      { 'type' : 'text/plain',   'label' : 'Plain' },
+      { 'type' : 'text/plain',   'label' : 'Plain text' },
       { 'type' : 'text/css',   'label' : 'CSS' },
       { 'type' : 'text/html',   'label' : 'HTML' },
       { 'type' : 'application/javascript', 'label' : 'JavaScript' },
@@ -38,10 +38,19 @@ exports.index = function(req, res){
 	    {'type' : 'application/x-shockwave-flash', 'label' : 'SWF' }
 	  ]}
 	];
-	
+
+	// http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 	var http = [
 	  { 'code' : 200, 'label' : 'OK' },
+
+	  { 'code' : 403, 'label' : 'Forbidden' },
 	  { 'code' : 404, 'label' : 'Not Found' },
+	  { 'code' : 410, 'label' : 'Gone' },
+	  { 'code' : 404, 'label' : 'Not Found' },
+
+	  { 'code' : 500, 'label' : 'Internal Server Error' },
+	  { 'code' : 503, 'label' : 'Service Unavailable' }
+	  
 	];
 	
 
