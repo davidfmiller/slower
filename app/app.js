@@ -68,9 +68,14 @@ app.get('/slower', function(req, res) {
 
   var parsed = url.parse(req.url, true),
       query = parsed.query,
-      canned = query.mime,
-      sleep = parseInt(query.sleep ? query.sleep : 1, 10) * 1000,
+      canned = query.mime ? query.mime : 'text/plain',
+      status = (query.status ? query.status : null),
+      sleep = parseInt(query.sleep ? query.sleep : 0, 10) * 1000,
       target = query.url;
+
+  if (! status) { 
+    status = 200;
+  }
 
   if (target) {
 
@@ -98,7 +103,7 @@ app.get('/slower', function(req, res) {
     setTimeout( function() { 
       fs.readFile(f, function(err, data) {
         if (! err) {
-          res.writeHead(200, { 'Content-Type' : canned, 'Cache-Control' : 'no-cache, must-revalidate' });
+          res.writeHead(status, { 'Content-Type' : canned, 'Cache-Control' : 'no-cache, must-revalidate' });
           res.end(data);
         } else {
           res.writeHead(500, { 'Content-Type' : 'text/html' });

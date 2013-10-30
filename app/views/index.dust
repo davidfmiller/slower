@@ -7,7 +7,7 @@
       <legend>Duration</legend>
 	    <label for="rmr-slow-sleep" id="sleep">
         <span>Sleep:</span>	    
-  	    <input name="sleep" id="rmr-slow-sleep" type="number" min="1" max="10" value="{sleep}"> seconds
+  	    <input name="sleep" id="rmr-slow-sleep" type="number" min="0" max="10" value="{sleep}"> seconds
   	  </label>
     </fieldset>
 
@@ -24,6 +24,15 @@
             </optgroup>
           {/mimes}
         </select> , or
+	    </label>
+
+	    <label for="rmr-slow-status">
+	      <span>Status:</span>
+        <select name="status" id="rmr-slow-status">
+          {#codes}
+              <option value="{code}">{code} {label}</option>
+          {/codes}
+        </select>
 	    </label>
 
       <label for="rmr-slow-url">

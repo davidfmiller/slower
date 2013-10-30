@@ -38,6 +38,12 @@ exports.index = function(req, res){
 	    {'type' : 'application/x-shockwave-flash', 'label' : 'SWF' }
 	  ]}
 	];
+	
+	var http = [
+	  { 'code' : 200, 'label' : 'OK' },
+	  { 'code' : 404, 'label' : 'Not Found' },
+	];
+	
 
-  res.render('index', { mimes : types, domain : 'localhost:8080', sleep : 1 });
+  res.render('index', { mimes : types, codes : http, domain : 'localhost:8080', sleep : 1 });
 };
