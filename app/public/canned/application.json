@@ -1,5 +1,5 @@
 {
-  "slow" : {
+  "slower" : {
     "mime" : "application/json",
     "url" : "https://github.com/davidfmiller/slower"
   }
