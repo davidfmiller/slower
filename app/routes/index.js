@@ -26,6 +26,7 @@ exports.index = function(req, res){
       { 'type' : 'image/png',  'label' : 'PNG' },
       { 'type' : 'image/tiff', 'label' : 'TIFF' },
       { 'type' : 'image/x-icon', 'label' : 'ICO' },
+      { 'type' : 'image/svg+xml', 'label' : 'SVG' }
     ]},
 	  {
 	  'group' : 'Media',
