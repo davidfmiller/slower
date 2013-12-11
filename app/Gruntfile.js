@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jshint : {
-      files : ['public/assets/js/*.js'],
+      files : ['scripts/*.js'],
     },
 
     uglify: {
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
           mangle: false
         },
         files: {
-//          'public/assets/js/strava.js': ['scripts/strava.js']
+          'public/assets/js/slower.js': ['scripts/*.js']
         }
       }
     },
@@ -38,8 +38,8 @@ module.exports = function(grunt) {
         tasks : ['compass']
       },
       js : {
-        files : ['public/assets/js/*.js'],
-        tasks : ['jshint']
+        files : ['scripts/*.js'],
+        tasks : ['jshint', 'uglify']
       }
     }
   });
