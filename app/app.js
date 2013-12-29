@@ -79,6 +79,7 @@ app.get('/slower', function(req, res) {
 
   if (target) {
 
+    // ensure 
     target = (target.substring(0, 7) == 'http://' ? '' : 'http://') + target;
 
     console.log('slowing ' + target);

@@ -19,7 +19,7 @@
           {#mimes}
             <optgroup label="{group}">
               {#types}
-                <option value="{type}">{label}</option>
+                <option value="{type}" id="{id}">{label}</option>
               {/types}
             </optgroup>
           {/mimes}
@@ -46,7 +46,7 @@
 	    </fieldset>
 	  </fieldset>
 	</form>
-<!--
-  <input id="rmr-slow-result">
--->
+
+  <!--<input id="rmr-slow-result" type="text">-->
+
 {/content}
