@@ -39,14 +39,15 @@
         <span>URL:</span>
   	    <input id="rmr-slow-url" type="url" name="url" value="" placeholder="http://" size="24">
 	    </label>
-	    </fieldset>
-
-	    <fieldset class="submit">
-  	    <input type="submit" value="Slow"> <span></span>
-	    </fieldset>
 	  </fieldset>
+
+    <fieldset class="submit">
+      <input type="submit" value="Slow"> <span></span>
+    </fieldset>
+
 	</form>
 
-  <!--<input id="rmr-slow-result" type="text">-->
+  <input id="rmr-slow-result" type="text" width="100">
+
 
 {/content}

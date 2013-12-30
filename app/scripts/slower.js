@@ -14,17 +14,25 @@ YUI.add('slower', function(Y) {
 
       initializer : function(config) {
 
+        var self = this;
+        self.update();
+
         Y.one('a.marklet').on('click', function(e) {
           e.halt();
           alert(e.target.get('title'));
         });
-  
+
         Y.all('form input, form select').on('change', function(e) {
           e.target.ancestor('form').removeClass(LOADING_CLASS);
+          self.update();          
         });
 
         Y.all('form input, form select').on('focus', function(e) {
           e.target.ancestor('form').removeClass(LOADING_CLASS);
+        });
+
+        Y.one('#rmr-slow-result').on('click', function(e) {
+          e.target._node.select();
         });
 
         if (! document.body.addEventListener) { return; } // todo move to yui key event
@@ -33,15 +41,16 @@ YUI.add('slower', function(Y) {
               li = null,
               opt = '#rmr-slow-opt-';
 
-            Y.log(code);
+//            Y.log(code);
 
           if (code >= 48 && code <= 57) {
 
             Y.one('#rmr-slow-sleep').set('value', code == 48 ? 0 : code - 48);
+            self.update();
 
           } else if (code == 13) {
 
-            Y.one('form .submit input')._node.click();
+            Y.one('#rmr-slow-result')._node.click();
 
           } else {
 
@@ -100,6 +109,7 @@ YUI.add('slower', function(Y) {
 
             if (opt) {
               Y.one(opt).set('selected', true);
+              self.update();
             }
           }
           
@@ -107,22 +117,37 @@ YUI.add('slower', function(Y) {
 
 
         Y.one('form .submit input').on('click', function(e) {
-          var f = e.target.ancestor('form'),
-              dest = Y.one('#rmr-slow-result');
+          var f = e.target.ancestor('form');
 
+//Y.log(f.get('action'));
 //          Y.one('#rmr-slow-result').set('value', 'adsf');
 
           f.addClass(LOADING_CLASS); //._node.submit();
-          
+
 //          e.halt();
-//          dest.set('value', 'hi');
 
 //          dest.focus();
 
 //          rmr-slow-result
+          self.update();
         });
 
 //        Y.one('form').removeClass(LOADING_CLASS);
+      },
+      
+      update : function() {
+
+        var query = '',
+        inputs = Y.all('#rmr-slow-sleep, #rmr-slow-mime, #rmr-slow-status, #rmr-slow-url');
+
+        inputs.each(function(i) {
+          if (i.get('value')) {
+            query += (query ? '&' : '?') + i.get('name') + '=' + encodeURIComponent(i.get('value'));
+          }
+        });
+        
+        Y.one('#rmr-slow-result').set('value', Y.one('form').get('action') + query);
+
       }
     },
     {
