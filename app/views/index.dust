@@ -19,7 +19,7 @@
           {#mimes}
             <optgroup label="{group}">
               {#types}
-                <option value="{type}" id="{id}">{label}</option>
+                <option value="{type}" id="{id}" {@if cond="'{selected}'"}selected{/if}>{label}</option>
               {/types}
             </optgroup>
           {/mimes}
@@ -30,14 +30,14 @@
 	      <span>Status:</span>
         <select name="status" id="rmr-slow-status">
           {#codes}
-              <option value="{code}">{code} - {label}</option>
+              <option value="{code}" {@if cond="'{selected}'"}selected{/if}>{code} - {label}</option>
           {/codes}
         </select>
 	    </label>
 
       <label for="rmr-slow-url">
         <span>URL:</span>
-  	    <input id="rmr-slow-url" type="url" name="url" value="" placeholder="http://" size="24">
+  	    <input id="rmr-slow-url" type="url" name="url" value="{url}" placeholder="http://" size="24">
 	    </label>
 	  </fieldset>
 

@@ -4,7 +4,22 @@ exports.index = function(req, res){
 
 	res.locals.session = req.session;
 
-	var types = [
+  var url = require('url'),
+      types,
+      http,
+      i,
+      groups,
+      opt,
+      query = url.parse(req.url, true).query,
+      sleep = 1,
+      url = query.url ? query.url : '';
+
+  if (query.sleep) {
+    sleep = parseInt(query.sleep, 10);
+    if (! sleep) { sleep = 1; } 
+  }
+
+	types = [
     {
     'group' : 'Text',
     'types' : [
@@ -40,7 +55,7 @@ exports.index = function(req, res){
 	];
 
 	// http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
-	var http = [
+	http = [
 	  { 'code' : 200, 'label' : 'OK' },
 
 	  { 'code' : 403, 'label' : 'Forbidden' },
@@ -52,16 +67,21 @@ exports.index = function(req, res){
 	  { 'code' : 503, 'label' : 'Service Unavailable' }
 	];
 
-	for (var i in types) {
-	  for (var groups in types[i]) {
-	    for (var opt in types[i].types) {
-	      
-	      console.log(types[i].types[opt].type);
+	for (i in types) {
+	  for (groups in types[i]) {
+	    for (opt in types[i].types) {
 	      types[i].types[opt].id = 'rmr-slow-opt-' + types[i].types[opt].type.replace(/[\/\+]/g, '-');
+	      types[i].types[opt].selected = types[i].types[opt].type == query.mime;
 	    }
 	  }
 	}
+
+	for (i in http) {
+	  http[i].selected = http[i].code == query.status;
+	}
+	
+//	console.log(types);
 	
 
-  res.render('index', { mimes : types, codes : http, domain : 'localhost:8080', sleep : 1 });
+  res.render('index', { 'mimes' : types, 'codes' : http, 'domain' : 'localhost:8080', 'sleep' : sleep, 'url' : url });
 };
