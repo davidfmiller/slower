@@ -2,8 +2,6 @@ exports.index = function(req, res){
 
   'use strict';
 
-	res.locals.session = req.session;
-
   var url = require('url'),
       types,
       http,
@@ -79,9 +77,6 @@ exports.index = function(req, res){
 	for (i in http) {
 	  http[i].selected = http[i].code == query.status;
 	}
-	
-//	console.log(types);
-	
 
   res.render('index', { 'mimes' : types, 'codes' : http, 'domain' : 'localhost:8080', 'sleep' : sleep, 'url' : url });
 };

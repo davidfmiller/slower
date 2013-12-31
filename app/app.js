@@ -71,7 +71,11 @@ app.get('/slower', function(req, res) {
       canned = query.mime ? query.mime : 'text/plain',
       status = (query.status ? query.status : null),
       sleep = parseInt(query.sleep ? query.sleep : 0, 10) * 1000,
-      target = query.url;
+      target = query.url,
+      error = function() {
+        res.writeHead(500, { 'Content-Type' : 'text/html' });
+        res.end('oops');
+      }
 
   if (! status) { 
     status = 200;
@@ -90,8 +94,7 @@ app.get('/slower', function(req, res) {
           res.writeHead('200', {'Content-Type' : response.headers['content-type'], 'Cache-Control' : 'no-cache, must-revalidate' });
           res.end(body);
         } else {
-          res.writeHead(500, { 'Content-Type' : 'text/html' });
-          res.end('oops');
+          error();
         }
       });
     }, sleep);
@@ -107,8 +110,7 @@ app.get('/slower', function(req, res) {
           res.writeHead(status, { 'Content-Type' : canned, 'Cache-Control' : 'no-cache, must-revalidate' });
           res.end(data);
         } else {
-          res.writeHead(500, { 'Content-Type' : 'text/html' });
-          res.end('oops');
+          error();
         }
       });
     }, sleep);
