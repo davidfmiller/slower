@@ -7,6 +7,7 @@
     <meta name="keywords" content="slower">
     <meta name="description" content="slower">
     <meta name="viewport" content="width=400">
+    <link href="/assets/img/favicon.ico" rel="shortcut icon">
 
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/assets/img/apple-touch-icon/57x57.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/apple-touch-icon/72x72.png">
